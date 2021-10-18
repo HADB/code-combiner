@@ -27,7 +27,6 @@ def run(project_path):
                     ".m",
                     ".h",
                     ".py",
-                    ".json",
                     ".xml",
                     ".kt",
                 ]:
