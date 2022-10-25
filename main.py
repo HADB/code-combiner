@@ -7,7 +7,8 @@ CURRENT_PATH = os.getcwd()  # 当前目录
 
 def run(project_path):
     g = os.walk(project_path)
-    with open(os.path.join(CURRENT_PATH, "output.txt"), "w", encoding="utf-8") as file_write:
+    os.makedirs(f"{CURRENT_PATH}/outputs", exist_ok=True)
+    with open(f"{CURRENT_PATH}/outputs/{os.path.basename(project_path)}.txt", "w", encoding="utf-8") as file_write:
         for path, _, file_list in g:
             if "node_modules" in path or "dist" in path:
                 continue
@@ -29,6 +30,7 @@ def run(project_path):
                     ".py",
                     ".xml",
                     ".kt",
+                    ".json",
                 ]:
                     print(os.path.join(sub_path, file_name))
                     with open(os.path.join(path, file_name), "r", encoding="utf-8") as file_read:
